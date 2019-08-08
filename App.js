@@ -16,7 +16,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
+import MAP from './src/index'
 import {
   Header,
   LearnMoreLinks,
@@ -24,6 +24,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+// import MapView, { Marker } from 'react-native-maps';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -31,10 +33,24 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 const App = () => {
+  
+
   return (
+  //   <MapView
+  //   initialRegion={{
+  //     latitude: 37.78825,
+  //     longitude: -122.4324,
+  //     latitudeDelta: 0.0922,
+  //     longitudeDelta: 0.0421,
+  //   }}
+  // />
     <Fragment>
-      <StatusBar barStyle="dark-content" />
+      <MAP/>
+
+  
+      {/* <StatusBar barStyle="dark-content" />
       <SafeAreaView>
+ 
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
@@ -75,7 +91,7 @@ const App = () => {
             <LearnMoreLinks />
           </View>
         </ScrollView>
-      </SafeAreaView>
+      </SafeAreaView> */}
     </Fragment>
   );
 };
