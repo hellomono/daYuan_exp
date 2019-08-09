@@ -42,11 +42,11 @@ const instructions = Platform.select({
 
 
 type Props = {};
-export default class MAP extends Component<Props> {
-  static navigationOptions = {
-    title: 'index',
-    /* No more header config here! */
-  };
+export default class BookRead extends Component<Props> {
+        static navigationOptions = {
+                title: 'DetailsScreen',
+                /* No more header config here! */
+              };
 constructor(props){
   super(props);
   this.indexHistory = [0];

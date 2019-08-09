@@ -29,6 +29,8 @@ target 'appleMapTs' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'react-native-geolocation', path: '../node_modules/@react-native-community/geolocation'
 
+  pod 'RNGestureHandler', :podspec => '../node_modules/react-native-gesture-handler/RNGestureHandler.podspec' 
+
 
   target 'appleMapTsTests' do
     inherit! :search_paths

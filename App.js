@@ -14,9 +14,17 @@ import {
   ScrollView,
   View,
   Text,
+  Dimensions,
+
+  Button,
   StatusBar,
+  Image,
+  Alert,
+  TextInput,
+  AsyncStorage,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
-import MAP from './src/index'
 import {
   Header,
   LearnMoreLinks,
@@ -24,6 +32,11 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import MAP from './src/index'
+
+// import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator, withNavigation } from 'react-navigation';
+import {createAppContainer, createStackNavigator } from 'react-navigation';
+
 // import MapView, { Marker } from 'react-native-maps';
 
 const instructions = Platform.select({
@@ -32,69 +45,100 @@ const instructions = Platform.select({
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-const App = () => {
+
+const { width, height } = Dimensions.get('window');
+class DetailsScreen extends React.Component {
+  static navigationOptions = {
+    title: 'DetailsScreen',
+    /* No more header config here! */
+  };
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+            <Button
+    title="Go to Details"
+    onPress={() => this.props.navigation.push('MAP')}
+  />
+      </View>
+    );
+  }  
+}
+// const App = () => {
   
 
-  return (
-  //   <MapView
-  //   initialRegion={{
-  //     latitude: 37.78825,
-  //     longitude: -122.4324,
-  //     latitudeDelta: 0.0922,
-  //     longitudeDelta: 0.0421,
-  //   }}
-  // />
-    <Fragment>
-      <MAP/>
+//   return (
+//   //   <MapView
+//   //   initialRegion={{
+//   //     latitude: 37.78825,
+//   //     longitude: -122.4324,
+//   //     latitudeDelta: 0.0922,
+//   //     longitudeDelta: 0.0421,
+//   //   }}
+//   // />
+//     <Fragment>
+//        <Text>Home Screen</Text>
+//         <Button
+//           title="Go to Details"
+//           onPress={() => this.props.navigation.navigate('DetailsScreen')}
+//         />
+//       <MAP/>
+//     </Fragment>
+//   );
+// };
 
-  
-      {/* <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
- 
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-          <Text>{instructions}</Text>
+const RootStack = createStackNavigator({
+  Home: {
+    screen: DetailsScreen
+  },
+  MAP: {
+    screen: MAP
+  },
+  Signup: {
+    screen: DetailsScreen
+  }
+});
 
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView> */}
-    </Fragment>
-  );
-};
+
+
+// const RootStack = createStackNavigator(
+//   {
+//     // Login: { screen: Login_index },
+
+//     // Home: { screen: HomeScreen },
+//     MAP :{screen:MAP},
+//     // QRvue: { screen: QRvue },
+//     // Setup: { screen: Setup },
+
+//     Details: { screen: DetailsScreen },
+//     // Phone: {
+//     //   screen: TokenScreen,
+//     //   path: 'token/:token_code',
+//     // },
+//     Phone: {
+//       screen: DetailsScreen,
+//       path: 'token/:token_code',
+//     },
+    
+//   },
+//   {
+//     // initialRouteName: 'Login',
+//      initialRouteName: 'MAP',
+
+//   }
+// );
+
+const prefix = 'bike://';
+const App = createAppContainer(RootStack);
+export default App ;
+
+// export default App = () => <RootStack/>;
+
+// export default App = () => <RootStack uriPrefix={prefix} />;
+// export default App;
+// export default DetailsScreen;
+
+
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -135,4 +179,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
