@@ -20,9 +20,11 @@ import {Platform,
      SafeAreaView,
      AsyncStorage,
      Dimensions,
+     Button
     //  Geolocation
     } from 'react-native';
     import MapView, { Marker,Circle,Polyline,Polygon } from 'react-native-maps';
+    import Geolocation from 'react-native-geolocation-service';
 
 // 取得屏幕的宽高Dimensions
 const { width, height } = Dimensions.get('window'); 
@@ -57,8 +59,13 @@ constructor(props){
     initialPosition: 'unknown',
     lastPosition: 'unknown',
     currentLocation: 'unknown',
+    loading: false,
+    updatesEnabled: false,
+    location: {}
 };
 }
+watchId = null;
+
 
 getLocation(){
   Geolocation.getCurrentPosition((location) => {
@@ -116,28 +123,114 @@ componentWillMount() {
 //     })
 // });
 // }
-componentDidMount = () => {
-  navigator.geolocation.getCurrentPosition(
-     (position) => {
-        const initialPosition = JSON.stringify(position);
-        this.setState({ initialPosition });
-     },
-     (error) => alert(error.message),
-     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+componentDidMount() {
+  // Instead of navigator.geolocation, just use Geolocation.
+  // if (hasLocationPermission) {
+  //     Geolocation.getCurrentPosition(
+  //         (position) => {
+  //             console.log(position);
+  //         },
+  //         (error) => {
+  //             // See error code charts below.
+  //             console.log(error.code, error.message);
+  //         },
+  //         { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+  //     );
+  // }
+}
+
+hasLocationPermission = async () => {
+  if (Platform.OS === 'ios' ||
+      (Platform.OS === 'android' && Platform.Version < 23)) {
+    return true;
+  }
+
+  const hasPermission = await PermissionsAndroid.check(
+    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
   );
-  this.watchID = navigator.geolocation.watchPosition((position) => {
-     const lastPosition = JSON.stringify(position);
-     this.setState({ lastPosition });
+
+  if (hasPermission) return true;
+
+  const status = await PermissionsAndroid.request(
+    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+  );
+
+  if (status === PermissionsAndroid.RESULTS.GRANTED) return true;
+
+  if (status === PermissionsAndroid.RESULTS.DENIED) {
+    ToastAndroid.show('Location permission denied by user.', ToastAndroid.LONG);
+  } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+    ToastAndroid.show('Location permission revoked by user.', ToastAndroid.LONG);
+  }
+
+  return false;
+}
+
+getLocation = async () => {
+  const hasLocationPermission = await this.hasLocationPermission();
+
+  if (!hasLocationPermission) return;
+
+  this.setState({ loading: true }, () => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({ location: position, loading: false });
+        console.log(position);
+      },
+      (error) => {
+        this.setState({ location: error, loading: false });
+        console.log(error);
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000, distanceFilter: 50, forceRequestLocation: true }
+    );
   });
+}
+
+getLocationUpdates = async () => {
+  const hasLocationPermission = await this.hasLocationPermission();
+
+  if (!hasLocationPermission) return;
+
+  this.setState({ updatesEnabled: true }, () => {
+    this.watchId = Geolocation.watchPosition(
+      (position) => {
+        this.setState({ location: position });
+        console.log(position);
+      },
+      (error) => {
+        this.setState({ location: error });
+        console.log(error);
+      },
+      { enableHighAccuracy: true, distanceFilter: 0, interval: 5000, fastestInterval: 2000 }
+    );
+  });
+}
+
+removeLocationUpdates = () => {
+    if (this.watchId !== null) {
+        Geolocation.clearWatch(this.watchId);
+        this.setState({ updatesEnabled: false })
+    }
 }
 
 
   render() {
+    const { loading, location, updatesEnabled } = this.state;
+
     return (
       <SafeAreaView style={{flex: 1}}>
 
       {/* <ScrollView style={{flex: 1}}> */}
-<View style={{flex: 1,flexDirection:'row'}}>
+<View style={{flex: 1,flexDirection:'column'}}>
+<Button title='Get Location' onPress={this.getLocation} disabled={loading || updatesEnabled} />
+        <View style={styles.buttons}>
+            <Button title='Start Observing' onPress={this.getLocationUpdates} disabled={updatesEnabled} />
+            <Button title='Stop Observing' onPress={this.removeLocationUpdates} disabled={!updatesEnabled} />
+        </View>
+
+        <View style={styles.result}>
+            <Text>{JSON.stringify(location, null, 4)}</Text>
+        </View>
 <MapView
        style={{ flex: 1 }}
        scrollEnabled={false}
