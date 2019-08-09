@@ -17,13 +17,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 //引用插件
 import MAP from './map';
 import EXP from './exp';
-
+import Target  from './target'
+import History from './history'
 // import Otherpage from './page/home/otherpage';
 // import otherHpage from './page/home/otherHpage';
 // import Webview from './page/web/Webview';
 // import User from './page/user/user';
-
-
 // import QRcode from './page/qrcode/QRvue';
 // //bulletin  是 今日工事 與 公告 的進入點
 // import Bulletin from './page/bulletin/Bulletin';
@@ -31,12 +30,9 @@ import EXP from './exp';
 // import Calendar from './page/calendar/Calendar';
 // //Request  是 請假 的進入點
 // import Request from './page/Request/Request';
-
 // //Dispatch  是 派工 的進入點
 // import Dispatch from './page/dispatch/Dispatch';
-
 // import Registered from './app/page/registered/Registered';
-
 // import Info from './app/page/home/Dinfo';
 const { width, height } = Dimensions.get('window');
 
@@ -63,8 +59,6 @@ class index_Screen extends React.Component {
         <Icon name="battery-quarter" size={30} color="#900" />
         <Icon name="battery-empty" size={30} color="#900" />
         <Icon name="bed" size={30} color="#900" />
-
-        
         <Icon name="american-sign-language-interpreting" size={30} color="#777" />
 
       </View>
@@ -95,13 +89,13 @@ class index_Screen extends React.Component {
 export default createBottomTabNavigator({
 
 
-  Bulletin:{screen:Bulletin},
-  Dispatch:{screen:Dispatch},
-  Request:{screen:Request},
-  Calendar:{screen:Calendar},
-  
+        MAP: { screen: MAP },
+        EXP: { screen: EXP },
+        Target:{screen:Target},
+        History:{screen:History}
 
-   info: { screen: User },
+
+//    info: { screen: User },
 
   // index: { screen: index_Screen },
   // Other: { screen: Otherpage },
@@ -116,17 +110,15 @@ export default createBottomTabNavigator({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'Dispatch') {
+        if (routeName === 'MAP') {
           iconName = "address-card";
-        } else if (routeName === 'Calendar') {
+        } else if (routeName === 'EXP') {
           iconName = "calendar-check";
 
-        } else if (routeName === 'Bulletin') {
+        } else if (routeName === 'target') {
           iconName = "home";
-        } else if (routeName === 'Request') {
+        } else if (routeName === 'History') {
           iconName = "hiking";
-        }else if (routeName === 'info') {
-          iconName = "user-circle";
         }
         // 
         //calendar-minus

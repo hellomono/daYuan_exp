@@ -33,9 +33,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import MAP from './src/index'
+import Router from './src/router'
 
 // import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator, withNavigation } from 'react-navigation';
 import {createAppContainer, createStackNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 // import MapView, { Marker } from 'react-native-maps';
 
@@ -60,6 +62,8 @@ class DetailsScreen extends React.Component {
     title="Go to Details"
     onPress={() => this.props.navigation.push('MAP')}
   />
+          <Icon name="battery-full" size={30} color="#6787A0" />
+
       </View>
     );
   }  
@@ -89,7 +93,7 @@ class DetailsScreen extends React.Component {
 
 const RootStack = createStackNavigator({
   Home: {
-    screen: DetailsScreen
+    screen: Router
   },
   MAP: {
     screen: MAP
