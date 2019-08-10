@@ -61,86 +61,37 @@ export default class CardNotice extends Component {
   componentDidMount() {
     console.warn("test")
     //检测网络是否连接
-    NetInfo.isConnected.fetch().done((isConnected) => {
-      this.setState({ isConnected });
-    });
+    // NetInfo.isConnected.fetch().done((isConnected) => {
+    //   this.setState({ isConnected });
+    // });
 
-    //检测网络连接信息
-    NetInfo.fetch().done((connectionInfo) => {
-      this.setState({ connectionInfo });
-    });
+    // //检测网络连接信息
+    // NetInfo.fetch().done((connectionInfo) => {
+    //   this.setState({ connectionInfo });
+    // });
 
-    //监听网络变化事件
-    NetInfo.addEventListener('change', (networkType) => {
-      this.setState({ isConnected: networkType })
-    })
+    // //监听网络变化事件
+    // NetInfo.addEventListener('change', (networkType) => {
+    //   this.setState({ isConnected: networkType })
+    // })
   }
   render() {
     return (
       <View >
         <Card body={
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+          <View style={{ flex: 1,width:width*0.15, backgroundColor:"red",flexDirection: 'row', justifyContent: 'center' }}>
 
 <TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }} onPress={() => { this.setModalVisible() }} >
-             
             {/* {this.state.isConnected ?  <Image style={styles.icon} source={require('../img/icon_on.png')} />:   <Image style={styles.icon} source={require('../img/icon_off.png')} /> } */}
-
-            <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', paddingHorizontal: 10, }}>
-             
-           
-
-              {/* <Text style={{ fontSize: 22, }}>{this.props.infoTitle}</Text> */}
+            <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center',  }}>
               <Text style={{ fontSize: 12, }}>{this.props.infoTitle}</Text>
-
               <Text style={{ fontSize: 12, }}>{"Labels:" + this.props.infoLabels}</Text>
               <Text style={{ fontSize: 12, }}>{"Created:" + this.props.infoCreated}</Text>
-
               {/* <Text style={{ fontSize: 12,}}>{"ID:"+this.cutString(this.props.infoTitle,16)}</Text> */}
-
               <Text style={{ fontSize: 12, }}>{"Size:" + this.props.infoSize}</Text>
               {/* <Text style={{ fontSize: 12,}}>{"ID:"+this.props.infoBody}</Text> */}
-              <Text style={{ fontSize: 12, }}>{"ID:" + this.cutString(this.props.infoBody, 15)}</Text>
-
-              {/* <Text style={{ fontSize: 12,}}>{"ID:"+this.state.dockerID}</Text> */}
-
-
-
-              {/* <Text style={{ fontSize: 14, flex: 1, lineHeight: 24, justifyContent: 'center', alignItems: 'center' }}>
-              {this.props.infoBody}</Text> */}
-
-         
+              <Text style={{ fontSize: 12, }}>{"ID:" + this.cutString(this.props.infoBody, 15)}</Text>         
             </View>
-
-
-
-            {/* {this.state.ContainerStauts ? 
-                <TouchableOpacity onPress={() => {this.setModalVisible()}} >
-                <Image style={styles.icon} source={require('../img/icon_start.png')} /> 
-                </TouchableOpacity>
-             :   
-             <TouchableOpacity onPress={() => {this.setModalVisible()}} >
-             <Image style={styles.icon} source={require('../img/icon_stop.png')} /> 
-             </TouchableOpacity>
-             }
-
-
-
-
-          <TouchableOpacity onPress={() => {this.setModalVisible()}} >
-          <Image style={styles.icon} source={require('../img/icon_restart.png')} /> 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.setModalVisible()}} >
-          <Image style={styles.icon} source={require('../img/icon_log.png')} /> 
-          </TouchableOpacity> */}
-
-
-
-            {/* <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center' }}>
-              
-                            <Text style={{ fontSize: 20, flex: 1, lineHeight: 24, justifyContent: 'center', alignItems: 'center' }}>
-              {"NUTC_R720XD"}</Text>
-            </View> */}
-
 </TouchableOpacity>
 
           </View>

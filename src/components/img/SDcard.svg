@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="166" height="217" viewBox="0 0 166 217">
+  <defs>
+    <clipPath id="clip-SDcard">
+      <rect width="166" height="217"/>
+    </clipPath>
+  </defs>
+  <g id="SDcard" clip-path="url(#clip-SDcard)">
+    <g id="Group_1234" data-name="Group 1234" transform="translate(12.89 14.753)">
+      <rect id="Rectangle_1030" data-name="Rectangle 1030" width="12.136" height="19.07" transform="translate(0 48.97)" fill="#fc871d"/>
+      <path id="Subtraction_33" data-name="Subtraction 33" d="M132.471,189.4H8.508C3.817,189.4,0,185.3,0,180.254V85.376H6.936V47.236H0V9.143C0,4.1,3.817,0,8.508,0H115.29l25.687,25.228V52.437h-6.936v10.4h6.936V180.254C140.978,185.3,137.162,189.4,132.471,189.4Z" transform="translate(1.183 0)" fill="#535357"/>
+      <rect id="Rectangle_1026" data-name="Rectangle 1026" width="116.156" height="152.563" rx="9" transform="translate(13.869 21.232)" fill="#6f7fb1"/>
+      <path id="Intersection_4" data-name="Intersection 4" d="M0,29.472V9A9,9,0,0,1,9,0h98.155a9,9,0,0,1,9,9V29.472Z" transform="translate(13.87 21.231)" fill="#e55151"/>
+    </g>
+  </g>
+</svg>

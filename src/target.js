@@ -8,11 +8,12 @@ import React from 'react';
 import { createBottomTabNavigator, createStackNavigator,createAppContainer } from 'react-navigation';
 import {
   Component, StyleSheet, Platform, Image, TextInput,  StatusBar,Alert,AsyncStorage,
-
+  RefreshControl,
    Button, Text, View, ScrollView, TouchableOpacity, Dimensions,SafeAreaView
 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import CardNotice_Image from './components/DockerImage/CardNotice_Image';
 
 //引用插件
 import MiniMAP from './components/Minimap';
@@ -30,7 +31,87 @@ export default class index_Screen extends React.Component {
           title: '獎章',
       
         };
-      
+        constructor() {
+                super();
+                // var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+            
+                this.state = {
+                  refreshing: false,
+                  isLoading: true,
+                  userToken: "",
+                  // dataSource:{"name":"as","price":10},
+                //   dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+            
+                  announcement: [
+                    {
+                      "Containers": -1,
+                      "Created": 1559585757,
+                      "Id": "sha256:00000000",
+                      "Labels": null,
+                      "ParentId": "sha256:00000000",
+                      "RepoDigests": null,
+                      "RepoTags": [
+                        "null:null"
+                      ],
+                      "SharedSize": -1,
+                      "Size": 19201080,
+                      "VirtualSize": 166244113
+                    },{
+                        "Containers": -1,
+                        "Created": 1559585757,
+                        "Id": "sha256:00000000",
+                        "Labels": null,
+                        "ParentId": "sha256:00000000",
+                        "RepoDigests": null,
+                        "RepoTags": [
+                          "null:null"
+                        ],
+                        "SharedSize": -1,
+                        "Size": 19201080,
+                        "VirtualSize": 166244113
+                      },{
+                        "Containers": -1,
+                        "Created": 1559585757,
+                        "Id": "sha256:00000000",
+                        "Labels": null,
+                        "ParentId": "sha256:00000000",
+                        "RepoDigests": null,
+                        "RepoTags": [
+                          "null:null"
+                        ],
+                        "SharedSize": -1,
+                        "Size": 19201080,
+                        "VirtualSize": 166244113
+                      },{
+                        "Containers": -1,
+                        "Created": 1559585757,
+                        "Id": "sha256:00000000",
+                        "Labels": null,
+                        "ParentId": "sha256:00000000",
+                        "RepoDigests": null,
+                        "RepoTags": [
+                          "null:null"
+                        ],
+                        "SharedSize": -1,
+                        "Size": 19201080,
+                        "VirtualSize": 166244113
+                      },{
+                        "Containers": -1,
+                        "Created": 1559585757,
+                        "Id": "sha256:00000000",
+                        "Labels": null,
+                        "ParentId": "sha256:00000000",
+                        "RepoDigests": null,
+                        "RepoTags": [
+                          "null:null"
+                        ],
+                        "SharedSize": -1,
+                        "Size": 19201080,
+                        "VirtualSize": 166244113
+                      },
+                  ],
+                };
+              }
         // 滑动tab
         renderScrollableTab() {
       
@@ -63,24 +144,41 @@ export default class index_Screen extends React.Component {
       
               <View style={styles.container}>
                
-                <View style={{ flex: 1 }}>
-                  {/* {this.renderScrollableTab()} */}
-                  <Text  color='#6787A0' >Home!</Text>
-              <Icon name="code" size={30} color="#900" />
-              <MiniMAP/>
-              <Icon name="battery-full" size={30} color="#6787A0" />
-              <MiniMAP/>
-              <Icon name="battery-three-quarters" size={30} color="#900" />
-              <MiniMAP/>
-              <Icon name="battery-half" size={30} color="#900" />
-              <Icon name="battery-quarter" size={30} color="#900" />
-              <Icon name="battery-empty" size={30} color="#900" />
-              <Icon name="bed" size={30} color="#900" />
-      
-              
-              <Icon name="american-sign-language-interpreting" size={30} color="#777" />
-      
-                </View>
+              <ScrollView style={styles.Scrollcontainer}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh} />}>
+            {/* <CardNotice infoTitle={this.state.announcement[0].title} infoBody={this.state.announcement[2].detail}/>  */}
+
+            <View style={{ flex: 1, flexDirection: 'row',flexWrap:"wrap" }}>
+
+            {this.state.announcement.map((note) => {
+              return (
+                <CardNotice_Image
+                  infoTitle={note.RepoTags}
+                  infoBody={note.Id}
+                  infoSize={note.Size}
+                  infoLabels={note.Labels}
+                  infoCreated={note.Created}
+                  />
+              );
+            })}
+
+
+</View>
+            <Button
+              title="新2"
+              onPress={() => {
+                // this._retrieveData();
+                this.getStorage().done();
+
+              }}
+            />
+
+            {/* <Card_A/> */}
+
+          </ScrollView>
               </View>
             </SafeAreaView>
           );

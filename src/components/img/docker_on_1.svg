@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="336.734" height="90" viewBox="0 0 336.734 90">
+  <defs>
+    <clipPath id="clip-docker_on_1">
+      <rect width="336.734" height="90"/>
+    </clipPath>
+  </defs>
+  <g id="docker_on_1" clip-path="url(#clip-docker_on_1)">
+    <g id="Group_1090" data-name="Group 1090" transform="translate(-8164 -192.27)">
+      <path id="Union_65" data-name="Union 65" d="M12.373,49.657q-.6,0-1.187-.058h-.454A10.36,10.36,0,0,1,.373,39.239c0-2.224-.151-4.174,0-5.727v-20H.447q.266,1.814.689,3.591A42.3,42.3,0,0,1,.645,0,64.7,64.7,0,0,1,44.233,17.429l0,0,.073.073q1.014.946,1.985,1.938c4.336,3.993,12.776,9.89,30.707,9.89h73.072l138.556-.272c5.721,0,3.975,4.464,3.975,10.185a10.36,10.36,0,0,1-10.36,10.36H45.268v.057H12.373ZM1.151,17.162Zm0,0v0A0,0,0,0,0,1.151,17.161Z" transform="translate(8165.355 223.321)" fill="#a4a9ad"/>
+    </g>
+  </g>
+</svg>

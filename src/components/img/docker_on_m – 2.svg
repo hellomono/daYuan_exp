@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="336.734" height="90" viewBox="0 0 336.734 90">
+  <defs>
+    <clipPath id="clip-docker_on_m_2">
+      <rect width="336.734" height="90"/>
+    </clipPath>
+  </defs>
+  <g id="docker_on_m_2" data-name="docker_on_m – 2" clip-path="url(#clip-docker_on_m_2)">
+    <g id="Group_1090" data-name="Group 1090" transform="translate(-8164 -192.27)">
+      <path id="Path_601" data-name="Path 601" d="M1582.124,382.43c14.139,10.32,17.812,34.043,17.812,34.043s-19.251,6.989-33.392-3.332-17.813-34.045-17.813-34.045S1567.983,372.107,1582.124,382.43Z" transform="translate(6899.848 -145.985)" fill="#a4a9ad" opacity="0.5"/>
+      <g id="card" transform="translate(8165.728 193.976)">
+        <rect id="bg" width="292.333" height="79.001" rx="12" fill="#4a5967"/>
+      </g>
+      <circle id="Ellipse_410" data-name="Ellipse 410" cx="6.264" cy="6.264" r="6.264" transform="translate(8217.102 227.342)" fill="#000102"/>
+      <path id="Path_605" data-name="Path 605" d="M1582.124,356.39c14.139-10.32,17.812-34.044,17.812-34.044s-19.251-6.989-33.392,3.332-17.813,34.044-17.813,34.044S1567.983,366.712,1582.124,356.39Z" transform="translate(6899.848 -124.802)" fill="#4a5967"/>
+      <path id="Path_637" data-name="Path 637" d="M4635.355-1197.95v38.086s.317,11.794,11.864,11.823,271.337,0,271.337,0,9.238.4,9.533-11.823-6.1-8.774-6.1-8.774H4713.22s-22.91.854-37.188-13.961S4635.355-1197.95,4635.355-1197.95Z" transform="translate(3530.345 1421.27)" fill="#a4a9ad"/>
+      <path id="Path_604" data-name="Path 604" d="M13.632,35.119C25.5,46.985,43.095,48.629,45.861,45.862S46.985,25.5,35.119,13.632,9.611-3.835,2.888,2.888,1.765,23.251,13.632,35.119Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 8335.229, 237.34)" fill="#3c4650"/>
+    </g>
+    <g id="Group_1093" data-name="Group 1093" transform="translate(52.695 34.63)">
+      <g id="Group_999" data-name="Group 999" transform="translate(0 0)">
+        <path id="Exclusion_9" data-name="Exclusion 9" d="M6.532,13.407a6.347,6.347,0,0,1-2.542-.527,6.5,6.5,0,0,1-2.076-1.437,6.694,6.694,0,0,1-1.4-2.131,6.889,6.889,0,0,1,0-5.219,6.694,6.694,0,0,1,1.4-2.131A6.5,6.5,0,0,1,3.989.527a6.4,6.4,0,0,1,5.085,0A6.5,6.5,0,0,1,11.15,1.963a6.694,6.694,0,0,1,1.4,2.131,6.889,6.889,0,0,1,0,5.219,6.694,6.694,0,0,1-1.4,2.131A6.5,6.5,0,0,1,9.074,12.88,6.348,6.348,0,0,1,6.532,13.407Zm0-9.3a12.353,12.353,0,0,0-4.205.65C1.076,5.226.415,5.9.415,6.7A6.381,6.381,0,0,0,.9,9.147a6.269,6.269,0,0,0,1.311,2,6.09,6.09,0,0,0,1.944,1.345,5.992,5.992,0,0,0,4.762,0,6.091,6.091,0,0,0,1.944-1.345,6.269,6.269,0,0,0,1.311-2A6.381,6.381,0,0,0,12.649,6.7c0-.8-.661-1.478-1.912-1.95A12.353,12.353,0,0,0,6.532,4.1Z" fill="#404040"/>
+      </g>
+    </g>
+    <g id="Group_1101" data-name="Group 1101" transform="translate(37.254 -4.661)">
+      <text id="Z" transform="translate(7 36.284)" fill="#fff" font-size="27" font-family="3270Medium, "IBM 3270""><tspan x="-7.236" y="0">Z</tspan></text>
+      <text id="Z-2" data-name="Z" transform="translate(20.49 28.348)" fill="#fff" font-size="27" font-family="3270Medium, "IBM 3270""><tspan x="-7.236" y="0">Z</tspan></text>
+      <text id="Z-3" data-name="Z" transform="translate(33.187 22)" fill="#fff" font-size="27" font-family="3270Medium, "IBM 3270""><tspan x="-7.236" y="0">Z</tspan></text>
+    </g>
+  </g>
+</svg>

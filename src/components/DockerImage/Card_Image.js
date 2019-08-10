@@ -10,14 +10,14 @@ import {
 
 // 取得屏幕的宽高Dimensions
 const { width, height } = Dimensions.get('window');
-import SvgDockerOn from '../img/icon/Sdcard';
+import SVGicon from '../img/icon/Sdcard';
 
 
 export default class Card extends Component {
   render() {
     return (
       <View style={[styles.card]}>
-        <SvgDockerOn style={styles.backgroundimg} />
+        <SVGicon width={width*0.25} height={width*0.25}style={styles.backgroundimg} />
 
         {/* <Image style={styles.backgroundimg} source={require('../img/docker_on.png')} />  */}
         <View style={styles.background}>
@@ -44,12 +44,13 @@ export default class Card extends Component {
 const styles = StyleSheet.create({
   card: {
     flex:1,
+    width:width*0.25,
     // flexDirection: 'column',
     // alignItems: 'center',
     // justifyContent: 'center',
     // width: width * 0.5,
     // padding: 5,
-    // backgroundColor: '#6E7493',
+    backgroundColor: '#FF749F',
     // borderRadius: 50,
     // marginVertical: 90,
     shadowColor: '#000000',
@@ -60,12 +61,14 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4
     },
-    marginHorizontal: 10,
+    // marginHorizontal: 5,
   },
   background: {
     flex:1,
     // height: 90,
-    width: width*0.45,
+    // width: width*0.45,
+    width: width*0.33,
+
     // resizeMode: 'cover',
         paddingVertical: 35,
         paddingHorizontal: 20,

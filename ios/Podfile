@@ -34,6 +34,8 @@ target 'appleMapTs' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'appleMapTsTests' do
     inherit! :search_paths
     # Pods for testing

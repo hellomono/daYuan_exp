@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="336.734" height="90" viewBox="0 0 336.734 90">
+  <defs>
+    <clipPath id="clip-docker_on_m">
+      <rect width="336.734" height="90"/>
+    </clipPath>
+  </defs>
+  <g id="docker_on_m" clip-path="url(#clip-docker_on_m)">
+    <g id="Group_1090" data-name="Group 1090" transform="translate(-8164 -192.27)">
+      <path id="Path_601" data-name="Path 601" d="M1582.124,382.43c14.139,10.32,17.812,34.043,17.812,34.043s-19.251,6.989-33.392-3.332-17.813-34.045-17.813-34.045S1567.983,372.107,1582.124,382.43Z" transform="translate(6899.848 -145.985)" fill="#a4a9ad" opacity="0.5"/>
+      <g id="card" transform="translate(8165.728 193.976)">
+        <rect id="bg" width="292.333" height="79.001" rx="12" fill="#4a5967"/>
+      </g>
+      <circle id="Ellipse_410" data-name="Ellipse 410" cx="6.264" cy="6.264" r="6.264" transform="translate(8217.102 227.342)" fill="#000102"/>
+      <path id="Path_605" data-name="Path 605" d="M1582.124,356.39c14.139-10.32,17.812-34.044,17.812-34.044s-19.251-6.989-33.392,3.332-17.813,34.044-17.813,34.044S1567.983,366.712,1582.124,356.39Z" transform="translate(6899.848 -124.802)" fill="#4a5967"/>
+      <path id="Path_637" data-name="Path 637" d="M4635.355-1197.95v38.086s.317,11.794,11.864,11.823,271.337,0,271.337,0,9.238.4,9.533-11.823-6.1-8.774-6.1-8.774H4713.22s-22.91.854-37.188-13.961S4635.355-1197.95,4635.355-1197.95Z" transform="translate(3530.345 1421.27)" fill="#a4a9ad"/>
+      <path id="Path_604" data-name="Path 604" d="M13.632,35.119C25.5,46.985,43.095,48.629,45.861,45.862S46.985,25.5,35.119,13.632,9.611-3.835,2.888,2.888,1.765,23.251,13.632,35.119Z" transform="matrix(0.998, -0.07, 0.07, 0.998, 8335.229, 237.34)" fill="#3c4650"/>
+    </g>
+  </g>
+</svg>
