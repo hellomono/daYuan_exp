@@ -238,7 +238,7 @@ removeLocationUpdates = () => {
        style={{ flex: 1 }}
        scrollEnabled={false}
        zoomEnabled={false}
-       initialRegion={{
+       region={{
         //  latitude: Number(this.props.latitude),
         //  longitude: Number(this.props.longitude),
         latitude: 24.147782,
