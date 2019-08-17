@@ -87,9 +87,9 @@ class index_Screen extends React.Component {
 
 
 export default createBottomTabNavigator({
+  MAP: { screen: MAP },
 
   Target:{screen:Target},
-        MAP: { screen: MAP },
         EXP: { screen: EXP },
        
         History:{screen:History}
