@@ -24,8 +24,8 @@ import {
   Button
   //  Geolocation
 } from 'react-native';
-import MapView, { Overlay, OverlayComponent, Marker, Circle, Polyline, Polygon } from 'react-native-maps';
-import Geolocation from 'react-native-geolocation-service';
+// import MapView, { Overlay, OverlayComponent, Marker, Circle, Polyline, Polygon } from 'react-native-maps';
+// import Geolocation from 'react-native-geolocation-service';
 
 // 取得屏幕的宽高Dimensions
 const { width, height } = Dimensions.get('window');
@@ -76,29 +76,8 @@ export default class BookRead extends Component<Props> {
 
     };
   }
-  watchId = null;
 
 
-  getLocation() {
-    Geolocation.getCurrentPosition((location) => {
-      let coordinate = [location.coords.longitude, location.coords.latitude]
-      this.setState({
-        currentLocation: coordinate
-      })
-    });
-  }
-  beginWatch() {
-    this.state.watchID = Geolocation.watchPosition((location) => {
-      let coordinate = [location.coords.longitude, location.coords.latitude]
-      this.setState({
-        currentLocation: coordinate
-      })
-    }
-    );
-  }
-  stopWatch() {
-    Geolocation.clearWatch(this.state.watchID);
-  }
   //获取位置
   //  getLocation() {
   //   Geolocation.getCurrentPosition(
@@ -151,80 +130,6 @@ export default class BookRead extends Component<Props> {
     // }
   }
 
-  hasLocationPermission = async () => {
-    if (Platform.OS === 'ios' ||
-      (Platform.OS === 'android' && Platform.Version < 23)) {
-      return true;
-    }
-
-    const hasPermission = await PermissionsAndroid.check(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-    );
-
-    if (hasPermission) return true;
-
-    const status = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-    );
-
-    if (status === PermissionsAndroid.RESULTS.GRANTED) return true;
-
-    if (status === PermissionsAndroid.RESULTS.DENIED) {
-      ToastAndroid.show('Location permission denied by user.', ToastAndroid.LONG);
-    } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
-      ToastAndroid.show('Location permission revoked by user.', ToastAndroid.LONG);
-    }
-
-    return false;
-  }
-
-  getLocation = async () => {
-    const hasLocationPermission = await this.hasLocationPermission();
-
-    if (!hasLocationPermission) return;
-
-    this.setState({ loading: true }, () => {
-      Geolocation.getCurrentPosition(
-        (position) => {
-          this.setState({ location: position, loading: false });
-          console.log(position);
-        },
-        (error) => {
-          this.setState({ location: error, loading: false });
-          console.log(error);
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000, distanceFilter: 50, forceRequestLocation: true }
-      );
-    });
-  }
-
-  getLocationUpdates = async () => {
-    const hasLocationPermission = await this.hasLocationPermission();
-
-    if (!hasLocationPermission) return;
-
-    this.setState({ updatesEnabled: true }, () => {
-      this.watchId = Geolocation.watchPosition(
-        (position) => {
-          this.setState({ location: position });
-          console.log(position);
-        },
-        (error) => {
-          this.setState({ location: error });
-          console.log(error);
-        },
-        { enableHighAccuracy: true, distanceFilter: 0, interval: 5000, fastestInterval: 2000 }
-      );
-    });
-  }
-
-  removeLocationUpdates = () => {
-    if (this.watchId !== null) {
-      Geolocation.clearWatch(this.watchId);
-      this.setState({ updatesEnabled: false })
-    }
-  }
-
 
   render() {
     const { loading, location, updatesEnabled } = this.state;
@@ -235,97 +140,20 @@ export default class BookRead extends Component<Props> {
         {/* <ScrollView style={{flex: 1}}> */}
         <View style={{ flex: 1, flexDirection: 'column' }}>
 
-          <MapView
-            style={{ flex: 1 }}
-            //  scrollEnabled={false}
-            //  zoomEnabled={false}
-            showsUserLocation={true}
-            userLocationAnnotationTitle={"你的位置"}
-            // mapType={"hybrid"}
-            mapType={"mutedStandard"}
-            region={{
-              //  latitude: Number(this.props.latitude),
-              //  longitude: Number(this.props.longitude),
-
-
-
-              latitude: location.coords.latitude,
-              longitude: location.coords.longitude,
-              // latitude: 24.147782,
-              // longitude: 120.673492,
-              latitudeDelta: 0.003,
-              longitudeDelta: 0.003,
-            }}
-          //  onPress={this.props.onPress}>
-          >
-            <Circle
-              radius={100}
-              center={{ latitude: 24.147782, longitude: 120.673492 }}
-              strokeColor={"rgba(50,100,200,0.5)"}
-              fillColor={"rgba(120,200,200,0.5)"}
-            />
-            <Overlay
-              image={"https://reactnative.cn/img/header_logo.png"}
-              bounds={[
-                [28.147282, 125.676492],
-                [22.147240, 118.676452]
-              ]} />
-
-            <Polyline
-              strokeColor={"rgba(320,200,200,0.9)"}
-              lineCap={"butt"}
-              coordinates={[
-                { latitude: 37.4133028, longitude: -122.151307 },
-                { latitude: 24.147890, longitude: 120.673380 },
-                { latitude: 24.149782, longitude: 120.673192 },
-                { latitude: location.coords.latitude, longitude: location.coords.longitude },
-              ]}
-            />
-
-            <Polygon
-              strokeColor={"rgba(50,100,200,0.5)"}
-              fillColor={"rgba(320,200,200,0.5)"}
-              coordinates={[
-                { latitude: 24.147282, longitude: 120.676492 },
-                { latitude: 24.147890, longitude: 120.673380 },
-                { latitude: 24.149782, longitude: 120.673192 },
-              ]}
-            />
-            <Marker
-              coordinate={{ latitude: Number(location.coords.latitude), longitude: Number(location.coords.longitude) }}
-            // coordinate={{latitude: 24.147782, longitude: 120.673492 }}
-
-            />
-            <Marker coordinate={{ latitude: Number(location.coords.latitude), longitude: Number(location.coords.longitude) }}>
-              <View style={{ backgroundColor: "red", padding: 10 }}>
-                <Text>SF</Text>
-              </View>
-            </Marker>
-            {/* <Marker draggable
-    coordinate={this.state.x}
-    onDragEnd={(e) => {
-      this.setState({ x: e.nativeEvent.coordinate })
-      console.warn(e.nativeEvent.coordinate )
-    }
-     
-    }
-  /> */}
-
-
-          </MapView>
+      
           <View style={{ width:width,height:height*0.15, position: "absolute", backgroundColor: "#FF0f0f" }}>
 
             <Button title='Get Location' onPress={this.getLocation} disabled={loading || updatesEnabled} />
             <View style={styles.buttons}>
-              <Button title='Start Observing' onPress={this.getLocationUpdates} disabled={updatesEnabled} />
-              <Button title='Stop Observing' onPress={this.removeLocationUpdates} disabled={!updatesEnabled} />
+              {/* <Button title='Start Observing' onPress={this.getLocationUpdates} disabled={updatesEnabled} />
+              <Button title='Stop Observing' onPress={this.removeLocationUpdates} disabled={!updatesEnabled} /> */}
             </View>
 
             <View style={styles.result}>
               <Text>{location.coords.latitude}</Text>
               <Text>{location.coords.longitude}</Text>
 
-              <Text>{JSON.stringify(location, null, 4)}</Text>
+              {/* <Text>{JSON.stringify(location, null, 4)}</Text> */}
             </View>
           </View>
           {/* <View style={{ position: "absolute", backgroundColor: "#FF0f0f", bottom: 50 }}>

@@ -32,9 +32,7 @@ target 'appleMapTs' do
   pod 'RNGestureHandler', :podspec => '../node_modules/react-native-gesture-handler/RNGestureHandler.podspec' 
 
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
   target 'appleMapTsTests' do
     inherit! :search_paths
